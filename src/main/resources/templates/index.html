@@ -1,11 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Hello</title>
+    <link rel="stylesheet" href="/Style.css">
 </head>
 <body>
 <h1>Hello</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Category</th>
+    </tr>
+    <tr th:each="event : ${events}">
+        <td th:text="${event.getName()}"/>
+        <td th:text="${event.getDate()}"/>
+        <td th:text="${event.getCategory()}"/>
+</table>
 
 </body>
 </html>

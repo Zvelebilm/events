@@ -2,6 +2,7 @@ package com.example.events.controller;
 
 import com.example.events.models.User;
 import com.example.events.security.SecurityService;
+import com.example.events.service.EventService;
 import com.example.events.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -16,23 +17,25 @@ import java.util.NoSuchElementException;
 public class WebController {
     private SecurityService securityService;
     private UserService userService;
+    private EventService eventService;
 
     @GetMapping("/")
     public String index(Model model) {
         try {
-
             User loggedInUser = securityService.getLoggedInUser();
             model.addAttribute("loggedInUser", loggedInUser);
-
+            model.addAttribute("events", eventService.getAllEvents());
         } catch (NoSuchElementException e) {
             return "redirect:/login";
         }
         return "index";
     }
+
     @GetMapping("/register")
     public String register() {
         return "register";
     }
+
     @PostMapping("/register")
     public String register(String username, String password) {
         userService.creatNewUser(username, password);

@@ -1,9 +1,6 @@
 package com.example.events.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +14,6 @@ import java.util.List;
 @Entity
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class Event {
     @Id
     @GeneratedValue
@@ -31,8 +27,30 @@ public class Event {
     private String description;
     private String imageUrl;
     private String category;
+    private Long creatorId;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<User> users;
 
+    public Event(String name, Date date, String location, int maxPlayers, int price, String description, String imageUrl, String category) {
+        this.name = name;
+        this.date = date;
+        this.location = location;
+        this.maxPlayers = maxPlayers;
+        this.price = price;
+        this.description = description;
+        this.imageUrl = imageUrl;
+        this.category = category;
+
+    }
+
+    public void setOwner(User user) {
+        this.creatorId = user.getId();
+    }
+
+    public Event() {
+    }
+    public void addParticipant(User user) {
+        this.users.add(user);
+    }
 }

@@ -28,7 +28,16 @@ public class User {
     //todo - add email etc
 
 
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany
     List<Event> events; //<-->
 
+
+    public User(String username, String password) {
+        this.name = username;
+        this.password = password;
+    }
+
+    /*public void addToEvents(Event event) {
+        this.events.add(event);
+    }*/
 }

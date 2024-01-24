@@ -17,13 +17,17 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
     public User getByUsername(String username) {
-        return userRepository.findByName(username).orElseThrow();
+        return userRepository.findByName(username).orElse(null);
     }
 
     public void creatNewUser(String username, String password) { //todo - check if user exists
         User user = new User();
         user.setName(username);
         user.setPassword(passwordEncoder.encode(password));
+        userRepository.save(user);
+    }
+
+    public void saveUser(User user) {
         userRepository.save(user);
     }
 }

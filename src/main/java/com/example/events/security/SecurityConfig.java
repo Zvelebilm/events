@@ -37,7 +37,7 @@ public class SecurityConfig {
                         .defaultSuccessUrl("/")
                 )
                 .authorizeHttpRequests(r -> {
-                    r.requestMatchers("/static/loginStyle.css", "/scripts/**", "/login", "/register","/**","/h2-console/**").permitAll();
+                    r.requestMatchers("/static/Style.css", "/scripts/**", "/login", "/register","/**","/h2-console/**").permitAll();
                     r.anyRequest().authenticated();
                 })
                 .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
