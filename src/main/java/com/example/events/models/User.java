@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.NaturalId;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -28,8 +29,8 @@ public class User {
     //todo - add email etc
 
 
-    @ManyToMany
-    List<Event> events; //<-->
+    @ManyToMany(mappedBy = "users")
+    List<Event> events = new ArrayList<>(); //<-->
 
 
     public User(String username, String password) {

@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @Entity
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Event {
     @Id
     @GeneratedValue
@@ -30,7 +32,7 @@ public class Event {
     private Long creatorId;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
 
     public Event(String name, Date date, String location, int maxPlayers, int price, String description, String imageUrl, String category) {
         this.name = name;
@@ -48,8 +50,6 @@ public class Event {
         this.creatorId = user.getId();
     }
 
-    public Event() {
-    }
     public void addParticipant(User user) {
         this.users.add(user);
     }

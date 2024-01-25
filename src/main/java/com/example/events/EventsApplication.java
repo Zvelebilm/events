@@ -41,10 +41,12 @@ public class EventsApplication implements CommandLineRunner {
 
         event1.setOwner(userService.getByUsername("user1"));
         eventService.creatNewEvent(event1);
-        eventService.saveEvent(event1);
-       // user2.addToEvents(eventService.getEventById(1L));
-        userService.saveUser(userService.getByUsername("user1"));
-        eventService.saveEvent(event1);
+        Event eventTest = eventService.getEventById(1L);  //this is correct
+        User user3 = userService.getByUsername("user3");
+        eventTest.addParticipant(user3);
+        eventService.saveEvent(eventTest);
+        userService.saveUser(user3);
+
 
 
     }
