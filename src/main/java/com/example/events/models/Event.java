@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,7 +23,7 @@ public class Event {
     private Long id;
 
     private String name;
-    private Date date;
+    private LocalDate date;
     private String location;
     private int maxPlayers;
     private int price;
@@ -34,7 +35,7 @@ public class Event {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<User> users = new ArrayList<>();
 
-    public Event(String name, Date date, String location, int maxPlayers, int price, String description, String imageUrl, String category) {
+    public Event(String name, LocalDate date, String location, int maxPlayers, int price, String description, String imageUrl, String category) {
         this.name = name;
         this.date = date;
         this.location = location;

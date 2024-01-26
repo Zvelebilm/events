@@ -8,17 +8,36 @@
 <body>
 <h1>Hello</h1>
 <h2 th:text="${loggedInUser}"></h2>
+<a  th:href="@{/logout}">Logout</a>
+
+
+<a th:href="@{/createEvent}">Create Event</a>
 <table>
     <tr>
         <th>Name</th>
         <th>Date</th>
+        <th>Location</th>
+        <th>Max Players</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Image Url</th>
         <th>Category</th>
+        <th>Owner</th>
+
     </tr>
     <tr th:each="event : ${events}">
         <td th:text="${event.getName()}"/>
         <td th:text="${event.getDate()}"/>
+        <td th:text="${event.getLocation()}"/>
+        <td th:text="${event.getMaxPlayers()}"/>
+        <td th:text="${event.getPrice()}"/>
+        <td th:text="${event.getDescription()}"/>
+        <td th:text="${event.getImageUrl()}"/>
         <td th:text="${event.getCategory()}"/>
+        <td th:text="${event.getCreatorId()}"/>
 </table>
+
+
 
 </body>
 </html>

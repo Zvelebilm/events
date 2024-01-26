@@ -3,8 +3,10 @@ package com.example.events.security;
 import com.example.events.repositories.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -37,11 +39,19 @@ public class SecurityConfig {
                         .defaultSuccessUrl("/")
                 )
                 .authorizeHttpRequests(r -> {
-                    r.requestMatchers("/static/Style.css", "/scripts/**", "/login", "/register","/h2-console/**").permitAll();
+                    r.requestMatchers("/static/Style.css", "/scripts/**", "/login",
+                            "/register","/h2-console/**","/**","/createEvent").permitAll();
+                   /* r.requestMatchers(HttpMethod.GET, "/**").permitAll();//todo hasAnyRole("USER", "ADMIN");
+                    r.requestMatchers(HttpMethod.POST, "/createEvent").permitAll();
+                    r.requestMatchers(HttpMethod.DELETE, "/**").permitAll();
+                    r.requestMatchers(HttpMethod.PUT, "/**").permitAll();*/
                     r.anyRequest().authenticated();
+
+
                 })
                 .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
                 .csrf(csrf -> csrf.ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")))
+                .csrf(csrf -> csrf.ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/createEvent")))
                 .build();
     }
     @Bean

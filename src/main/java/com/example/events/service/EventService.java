@@ -3,13 +3,11 @@ package com.example.events.service;
 import com.example.events.models.Event;
 import com.example.events.models.User;
 import com.example.events.repositories.EventRepository;
-import com.example.events.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -29,8 +27,12 @@ public class EventService {
         eventRepository.save(event);
     }*/
 
-    public void creatNewEvent(Event event1) {
+    public void createEvent(Event event1) { //todo remove
         eventRepository.save(event1);
+    }
+    public void createEventAndSetOwner(Event event, User user) {
+        event.setOwner(user);
+        eventRepository.save(event);
     }
 
     public Event getEventById(long l) {
