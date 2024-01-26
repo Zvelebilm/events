@@ -22,12 +22,17 @@ public class WebController {
     @GetMapping("/")
     public String index(Model model) {
         try {
-            User loggedInUser = securityService.getLoggedInUser();
-            model.addAttribute("loggedInUser", loggedInUser);
-            model.addAttribute("events", eventService.getAllEvents());
+            if (securityService.getLoggedInUser() == null) {
+                return "redirect:/login";
+            } else {
+                User loggedInUser = securityService.getLoggedInUser();
+                model.addAttribute("loggedInUser", loggedInUser.getName()); //todo swap to DTO
+                model.addAttribute("events", eventService.getAllEvents());
+            }
         } catch (NoSuchElementException e) {
             return "redirect:/login";
         }
+
         return "index";
     }
 
