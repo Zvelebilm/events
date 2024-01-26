@@ -6,12 +6,13 @@
     <link rel="stylesheet" href="/Style.css">
 </head>
 <body>
-<h1>Hello</h1>
-<h2 th:text="${loggedInUser}"></h2>
-<a  th:href="@{/logout}">Logout</a>
+<h1>Airsoft events</h1>
+    <ul class="navbarUl">
+        <li class="navbarLi"><a th:href="@{/}">Home</a></li>
+        <li class="navbarLi"><a th:href="@{/createEvent}">Create Event</a></li>
+        <li class="navbarLi"><a th:text="${loggedInUser}" th:href="@{/logout}">Logout</a></li>
+    </ul>
 
-
-<a th:href="@{/createEvent}">Create Event</a>
 <table>
     <tr>
         <th>Name</th>
@@ -36,7 +37,6 @@
         <td th:text="${event.getCategory()}"/>
         <td th:text="${event.getCreatorId()}"/>
 </table>
-
 
 
 </body>
