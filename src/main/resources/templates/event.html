@@ -7,40 +7,33 @@
 </head>
 <body>
 <div class="topnav">
-<ul class="navbarUl">
-    <a class="active" th:href="@{/}">Home</a>
-    <a th:href="@{/createEvent}">Create Event</a>
-    <a class="logout" th:text="${loggedInUser}" th:href="@{/logout}">Logout</a>
-</ul>
+    <ul class="navbarUl">
+        <a class="active" th:href="@{/}">Home</a>
+        <a th:href="@{/createEvent}">Create Event</a>
+        <a class="logout" th:text="${loggedInUser}" th:href="@{/logout}">Logout</a>
+    </ul>
 </div>
-
 <h1 th:text="${event.getName()}"/>
-
 <div class="event-info">
     <label>Date:</label>
     <span th:text="${event.getDate()}"></span>
-
     <label>Location:</label>
     <span th:text="${event.getLocation()}"></span>
-
     <label>Players / Max</label>
     <span th:text="${numberOfParticipants} + ' / ' + ${event.getMaxPlayers()}"></span>
-
-
     <label>Price:</label>
     <span th:text="${event.getPrice()}"></span>
-
     <label>Description:</label>
     <span th:text="${event.getDescription()}"></span>
-
     <label>Image Url:</label>
     <span th:text="${event.getImageUrl()}"></span>
-
     <label>Category:</label>
     <span th:text="${event.getCategory()}"></span>
-
     <label>Owner:</label>
     <span th:text="${event.getCreatorId()}"></span>
+</div>
+<div th:each="user:${event.getUsers()}">
+    <p th:text="${user.getName()}"></p>
 </div>
 </body>
 </html>
