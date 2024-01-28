@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Event</title>
+    <link rel="stylesheet" href="/Style.css">
+</head>
+<body>
+<ul class="navbarUl">
+    <li class="navbarLi"><a th:href="@{/}">Home</a></li>
+    <li class="navbarLi"><a th:href="@{/createEvent}">Create Event</a></li>
+    <li class="navbarLi"><a th:text="${loggedInUser}" th:href="@{/logout}">Logout</a></li>
+</ul>
+
+<h1 th:text="${event.getName()}"/>
+
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Max Players</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Image Url</th>
+        <th>Category</th>
+        <th>Owner</th>
+    </tr>
+    <tr>
+        <td th:text="${event.getDate()}"/>
+        <td th:text="${event.getLocation()}"/>
+        <td th:text="${event.getMaxPlayers()}"/>
+        <td th:text="${event.getPrice()}"/>
+        <td th:text="${event.getDescription()}"/>
+        <td th:text="${event.getImageUrl()}"/>
+        <td th:text="${event.getCategory()}"/>
+        <td th:text="${event.getCreatorId()}"/>
+    </tr>
+</table>
+</body>
+</html>

@@ -35,6 +35,21 @@ public class WebController {
 
         return "index";
     }
+    @GetMapping("/event/{id}")
+    public String event(@PathVariable Long id, Model model) {
+        try {
+            if (securityService.getLoggedInUser() == null) {
+                return "redirect:/login";
+            } else {
+                User loggedInUser = securityService.getLoggedInUser();
+                model.addAttribute("loggedInUser", loggedInUser.getName());
+                model.addAttribute("event", eventService.getEventById(id));
+            }
+        } catch (NoSuchElementException e) {
+            return "redirect:/login";
+        }
+        return "event";
+    }
 
     @GetMapping("/createEvent")
     public String createEvent() {

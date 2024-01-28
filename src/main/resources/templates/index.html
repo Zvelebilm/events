@@ -7,41 +7,37 @@
 </head>
 <body>
 <h1>Airsoft events</h1>
-    <ul class="navbarUl">
-        <li class="navbarLi"><a th:href="@{/}">Home</a></li>
-        <li class="navbarLi"><a th:href="@{/createEvent}">Create Event</a></li>
-        <li class="navbarLi"><a th:text="${loggedInUser}" th:href="@{/logout}">Logout</a></li>
-    </ul>
+<ul class="navbarUl">
+    <li class="navbarLi"><a th:href="@{/}">Home</a></li>
+    <li class="navbarLi"><a th:href="@{/createEvent}">Create Event</a></li>
+    <li class="navbarLi"><a th:text="${loggedInUser}" th:href="@{/logout}">Logout</a></li>
+</ul>
 <article class="allEvents">
-    <article class="browser" th:each="event:${events}">
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Date</th>
-        <th>Location</th>
-        <th>Max Players</th>
-        <th>Price</th>
-        <th>Description</th>
-        <th>Image Url</th>
-        <th>Category</th>
-        <th>Owner</th>
+    <article class="event" th:each="event:${events}" t>
+       <a th:href="@{/event/{id}(id=${event.getId()})}"> <h2 th:text="${event.getName()}" /></a>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Max Players</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Image Url</th>
+                <th>Category</th>
+                <th>Owner</th>
 
-    </tr>
-    <tr >
-        <td th:text="${event.getName()}"/>
-        <td th:text="${event.getDate()}"/>
-        <td th:text="${event.getLocation()}"/>
-        <td th:text="${event.getMaxPlayers()}"/>
-        <td th:text="${event.getPrice()}"/>
-        <td th:text="${event.getDescription()}"/>
-        <td th:text="${event.getImageUrl()}"/>
-        <td th:text="${event.getCategory()}"/>
-        <td th:text="${event.getCreatorId()}"/>
-
-</table>
+            </tr>
+            <tr>
+                <td th:text="${event.getDate()}"/>
+                <td th:text="${event.getLocation()}"/>
+                <td th:text="${event.getMaxPlayers()}"/>
+                <td th:text="${event.getPrice()}"/>
+                <td th:text="${event.getDescription()}"/>
+                <td th:text="${event.getImageUrl()}"/>
+                <td th:text="${event.getCategory()}"/>
+                <td th:text="${event.getCreatorId()}"/>
+        </table>
     </article>
 </article>
-
-
 </body>
 </html>

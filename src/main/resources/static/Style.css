@@ -19,6 +19,14 @@
     padding: 5px;
     background-color: lightgray;
 }
+.event {
+    background: white;
+
+}
+.browser > h2, table {
+    margin: 10px;
+    font-size: 90%;
+}
 
 * {
     margin: 0;
