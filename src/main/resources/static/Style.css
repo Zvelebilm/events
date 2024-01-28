@@ -20,8 +20,16 @@
     background-color: lightgray;
 }
 .event {
+    display: inline-block;
     background: white;
-
+    border: 1px solid #130f0f;
+    padding: 10px;
+    width: auto; /* Adjust the width as needed */
+    margin: 10px;
+}
+.event-container {
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust the gap as needed */
 }
 .browser > h2, table {
     margin: 10px;
