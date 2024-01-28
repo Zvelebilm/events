@@ -12,7 +12,8 @@
         <li class="navbarLi"><a th:href="@{/createEvent}">Create Event</a></li>
         <li class="navbarLi"><a th:text="${loggedInUser}" th:href="@{/logout}">Logout</a></li>
     </ul>
-
+<article class="allEvents">
+    <article class="browser" th:each="event:${events}">
 <table>
     <tr>
         <th>Name</th>
@@ -26,7 +27,7 @@
         <th>Owner</th>
 
     </tr>
-    <tr th:each="event : ${events}">
+    <tr >
         <td th:text="${event.getName()}"/>
         <td th:text="${event.getDate()}"/>
         <td th:text="${event.getLocation()}"/>
@@ -36,7 +37,10 @@
         <td th:text="${event.getImageUrl()}"/>
         <td th:text="${event.getCategory()}"/>
         <td th:text="${event.getCreatorId()}"/>
+
 </table>
+    </article>
+</article>
 
 
 </body>
