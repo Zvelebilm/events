@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Creat Event</title>
+    <link rel="stylesheet" href="/Style.css">
 </head>
 <body>
+<div class="topnav">
+    <ul class="navbarUl">
+        <a class="active" th:href="@{/}">Home</a>
+        <a th:href="@{/createEvent}">Create Event</a>
+        <a th:text="${loggedInUser}" th:href="@{/logout}">Logout</a>
+    </ul>
+</div>
+<h1>Create Event</h1>
 
 <form action="/createEvent" method="POST">
     <label for="name">Name:</label>

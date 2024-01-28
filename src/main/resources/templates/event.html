@@ -6,35 +6,40 @@
     <link rel="stylesheet" href="/Style.css">
 </head>
 <body>
+<div class="topnav">
 <ul class="navbarUl">
-    <li class="navbarLi"><a th:href="@{/}">Home</a></li>
-    <li class="navbarLi"><a th:href="@{/createEvent}">Create Event</a></li>
-    <li class="navbarLi"><a th:text="${loggedInUser}" th:href="@{/logout}">Logout</a></li>
+    <a class="active" th:href="@{/}">Home</a>
+    <a th:href="@{/createEvent}">Create Event</a>
+    <a class="logout" th:text="${loggedInUser}" th:href="@{/logout}">Logout</a>
 </ul>
+</div>
 
 <h1 th:text="${event.getName()}"/>
 
-<table>
-    <tr>
-        <th>Date</th>
-        <th>Location</th>
-        <th>Max Players</th>
-        <th>Price</th>
-        <th>Description</th>
-        <th>Image Url</th>
-        <th>Category</th>
-        <th>Owner</th>
-    </tr>
-    <tr>
-        <td th:text="${event.getDate()}"/>
-        <td th:text="${event.getLocation()}"/>
-        <td th:text="${event.getMaxPlayers()}"/>
-        <td th:text="${event.getPrice()}"/>
-        <td th:text="${event.getDescription()}"/>
-        <td th:text="${event.getImageUrl()}"/>
-        <td th:text="${event.getCategory()}"/>
-        <td th:text="${event.getCreatorId()}"/>
-    </tr>
-</table>
+<div class="event-info">
+    <label>Date:</label>
+    <span th:text="${event.getDate()}"></span>
+
+    <label>Location:</label>
+    <span th:text="${event.getLocation()}"></span>
+
+    <label>Max Players:</label>
+    <span th:text="${event.getMaxPlayers()}"></span>
+
+    <label>Price:</label>
+    <span th:text="${event.getPrice()}"></span>
+
+    <label>Description:</label>
+    <span th:text="${event.getDescription()}"></span>
+
+    <label>Image Url:</label>
+    <span th:text="${event.getImageUrl()}"></span>
+
+    <label>Category:</label>
+    <span th:text="${event.getCategory()}"></span>
+
+    <label>Owner:</label>
+    <span th:text="${event.getCreatorId()}"></span>
+</div>
 </body>
 </html>

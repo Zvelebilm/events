@@ -7,11 +7,13 @@
 </head>
 <body>
 <h1>Airsoft events</h1>
-<ul class="navbarUl">
-    <li class="navbarLi"><a th:href="@{/}">Home</a></li>
-    <li class="navbarLi"><a th:href="@{/createEvent}">Create Event</a></li>
-    <li class="navbarLi"><a th:text="${loggedInUser}" th:href="@{/logout}">Logout</a></li>
-</ul>
+<div class="topnav">
+    <ul class="navbarUl">
+        <a class="active" th:href="@{/}">Home</a>
+        <a th:href="@{/createEvent}">Create Event</a>
+        <a th:text="${loggedInUser}" th:href="@{/logout}">Logout</a>
+    </ul>
+</div>
 <article class="allEvents">
     <article class="event" th:each="event:${events}">
         <div class="event-container">
