@@ -35,6 +35,7 @@ public class WebController {
 
         return "index";
     }
+
     @GetMapping("/event/{id}")
     public String event(@PathVariable Long id, Model model) {
         try {
@@ -50,6 +51,12 @@ public class WebController {
             return "redirect:/login";
         }
         return "event";
+    }
+
+    @PostMapping("/joinevent")
+    public String joinEvent(Long eventId) {
+        eventService.joinEvent(eventId, securityService.getLoggedInUser().getName());
+        return "redirect:/event/" + eventId;
     }
 
     @GetMapping("/createEvent")

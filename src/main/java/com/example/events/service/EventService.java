@@ -9,13 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @NoArgsConstructor
 @AllArgsConstructor
 public class EventService {
-@Autowired
+    @Autowired
     private EventRepository eventRepository;
+    private UserService userService;
     //todo delete event
     //todo update event
 
@@ -23,28 +25,41 @@ public class EventService {
     public void createEvent(Event event1) { //todo remove
         eventRepository.save(event1);
     }
+
     public void createEventAndSetOwner(Event event, User user) {
         event.setOwner(user);
         eventRepository.save(event);
     }
 
     public Event getEventById(long l) {
-       return eventRepository.findById(l).orElse(null); //todo remove orElse(null)
+        return eventRepository.findById(l).orElse(null); //todo remove orElse(null)
     }
 
     public void saveEvent(Event event1) {
         eventRepository.save(event1);
     }
 
-    public List<Event> getAllEvents(){
+    public List<Event> getAllEvents() {
         return eventRepository.findAll();
     }
 
-    public int getNumberOfParticipants(Long id){
-       try {
-           return eventRepository.findById(id).get().getUsers().size();
-       } catch (Exception e) {
-           return 0;
-       }
+    public int getNumberOfParticipants(Long id) {
+        try {
+            return eventRepository.findById(id).get().getUsers().size();
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    public void joinEvent(Long eventId, String username) {
+        try {
+            Event event = eventRepository.findById(eventId).orElse(new Event());
+            User user = userService.getByUsername(username); //todo cant find user that is the problem
+            event.addParticipant(user);
+            eventRepository.save(event);
+        } catch (Exception e) {
+            System.out.println("failed add user to event as participant");
+        }
+
     }
 }
