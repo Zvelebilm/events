@@ -16,16 +16,9 @@ import java.util.List;
 public class EventService {
 @Autowired
     private EventRepository eventRepository;
-
-
-    //todo create event
     //todo delete event
     //todo update event
 
-   /* public void creatNewEvent( String name, Date date, String location, int maxPlayers, int price, String description, String imageUrl, String category) {
-       Event event = new Event(name, date, location, maxPlayers, price, description, imageUrl, category);
-        eventRepository.save(event);
-    }*/
 
     public void createEvent(Event event1) { //todo remove
         eventRepository.save(event1);
@@ -45,5 +38,13 @@ public class EventService {
 
     public List<Event> getAllEvents(){
         return eventRepository.findAll();
+    }
+
+    public int getNumberOfParticipants(Long id){
+       try {
+           return eventRepository.findById(id).get().getUsers().size();
+       } catch (Exception e) {
+           return 0;
+       }
     }
 }

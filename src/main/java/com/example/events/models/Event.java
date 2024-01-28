@@ -32,6 +32,7 @@ public class Event {
     private String category;
     private Long creatorId;
 
+    @Getter
     @ManyToMany(fetch = FetchType.EAGER)
     private List<User> users = new ArrayList<>();
 

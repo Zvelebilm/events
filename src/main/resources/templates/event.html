@@ -23,8 +23,9 @@
     <label>Location:</label>
     <span th:text="${event.getLocation()}"></span>
 
-    <label>Max Players:</label>
-    <span th:text="${event.getMaxPlayers()}"></span>
+    <label>Players / Max</label>
+    <span th:text="${numberOfParticipants} + ' / ' + ${event.getMaxPlayers()}"></span>
+
 
     <label>Price:</label>
     <span th:text="${event.getPrice()}"></span>

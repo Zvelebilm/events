@@ -44,6 +44,7 @@ public class WebController {
                 User loggedInUser = securityService.getLoggedInUser();
                 model.addAttribute("loggedInUser", loggedInUser.getName());
                 model.addAttribute("event", eventService.getEventById(id));
+                model.addAttribute("numberOfParticipants", eventService.getNumberOfParticipants(id));
             }
         } catch (NoSuchElementException e) {
             return "redirect:/login";
