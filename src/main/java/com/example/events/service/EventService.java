@@ -6,18 +6,22 @@ import com.example.events.repositories.EventRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Component
 @NoArgsConstructor
-@AllArgsConstructor
 public class EventService {
-    @Autowired
     private EventRepository eventRepository;
     private UserService userService;
+    @Autowired
+    public EventService(EventRepository eventRepository, UserService userService) {
+        this.eventRepository = eventRepository;
+        this.userService = userService;
+    }
     //todo delete event
     //todo update event
 
