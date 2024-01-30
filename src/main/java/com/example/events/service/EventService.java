@@ -3,15 +3,9 @@ package com.example.events.service;
 import com.example.events.models.Event;
 import com.example.events.models.User;
 import com.example.events.repositories.EventRepository;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EventService {
@@ -50,7 +44,7 @@ public class EventService {
 
     public int getNumberOfParticipants(Long id) {
         try {
-            return eventRepository.findById(id).get().getUsers().size();
+            return eventRepository.findById(id).get().getUsers_db().size();
         } catch (Exception e) {
             return 0;
         }
@@ -60,7 +54,7 @@ public class EventService {
         try {
             Event event = eventRepository.findById(eventId).orElse(new Event());
             User user = userService.getByUsername(username);
-            if (event.getUsers().contains(user)) {
+            if (event.getUsers_db().contains(user)) {
                 return;
             }
 

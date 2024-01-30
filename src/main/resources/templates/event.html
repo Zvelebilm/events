@@ -38,7 +38,7 @@
         <tr>
             <th>Participants</th>
         </tr>
-        <tr th:each="user:${event.getUsers()}">
+        <tr th:each="user:${event.getUsers_db()}">
             <td th:text="${user.getName()}"/>
         </tr>
     </table>

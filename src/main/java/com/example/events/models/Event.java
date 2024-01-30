@@ -36,7 +36,7 @@ public class Event {
     @JsonIgnore
     @Getter
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<User> users = new ArrayList<>();
+    private List<User> users_db = new ArrayList<>();
 
     public Event(String name, LocalDate date, String location, int maxPlayers, int price, String description, String imageUrl, String category) {
         this.name = name;
@@ -66,6 +66,6 @@ public class Event {
     }
 
     public void addParticipant(User user) {
-        this.users.add(user);
+        this.users_db.add(user);
     }
 }

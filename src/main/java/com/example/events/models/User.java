@@ -29,8 +29,8 @@ public class User {
     //todo - add email etc
 
 
-    @ManyToMany(mappedBy = "users")
-    List<Event> events = new ArrayList<>(); //<-->
+    @ManyToMany(mappedBy = "users_db")
+    List<Event> events_db = new ArrayList<>(); //<-->
 
 
     public User(String username, String password) {
