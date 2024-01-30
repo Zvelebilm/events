@@ -71,6 +71,11 @@ public class WebController {
         return "redirect:/";
     }
 
+    @GetMapping("/api")
+    public String api() {
+        return "api";
+    }
+
     @GetMapping("/register")
     public String register() {
         return "register";

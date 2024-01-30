@@ -1,5 +1,6 @@
 package com.example.events.models;
 
+import com.example.events.DTO.EventCreateDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,7 +10,6 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -48,6 +48,17 @@ public class Event {
         this.imageUrl = imageUrl;
         this.category = category;
 
+    }
+
+    public Event(EventCreateDTO eventCreateDTO) {
+        this.name = eventCreateDTO.name();
+        this.date = eventCreateDTO.date();
+        this.location = eventCreateDTO.location();
+        this.maxPlayers = eventCreateDTO.maxPlayers();
+        this.price = eventCreateDTO.price();
+        this.description = eventCreateDTO.description();
+        this.imageUrl = eventCreateDTO.imageUrl();
+        this.category = eventCreateDTO.category();
     }
 
     public void setOwner(User user) {

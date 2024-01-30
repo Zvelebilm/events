@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/}">Home</a>
+<h1>API</h1>
+<h2>GET</h2>
+<h3>"/api/events"</h3>
+<pre>[
+    {
+        "name": "event1",
+        "date": "2024-01-30",
+        "location": "location1",
+        "maxPlayers": 10,
+        "price": 10,
+        "description": "description1",
+        "imageUrl": "image1",
+        "category": "category1"
+    },
+    {
+        "name": "event1",
+        "date": "2024-01-30",
+        "location": "location1",
+        "maxPlayers": 10,
+        "price": 10,
+        "description": "description1",
+        "imageUrl": "image1",
+        "category": "category1"
+    },
+    {
+        "name": "event1",
+        "date": "2024-01-30",
+        "location": "location1",
+        "maxPlayers": 10,
+        "price": 10,
+        "description": "description1",
+        "imageUrl": "image1",
+        "category": "category1"
+    }
+]
+ </pre>
+<h2>GET</h2>
+<h3>"/api/event/{id}"</h3>
+<pre>
+ {
+    "name": "event1",
+    "date": "2024-01-30",
+    "location": "location1",
+    "maxPlayers": 10,
+    "price": 10,
+    "description": "description1",
+    "imageUrl": "image1",
+    "category": "category1"
+}
+</pre>
+<h2>PUT</h2>
+<h3>"/api/createEvent"</h3>
+<pre>{
+        "name": "event1992",
+        "date": "2024-01-30",
+        "location": "location1",
+        "maxPlayers": 10,
+        "price": 10,
+        "description": "description1",
+        "imageUrl": "image1",
+        "category": "category1",
+        "username":"user1"              //username of the user that creates the event
+    }</pre>
+</body>
+</html>
