@@ -1,5 +1,6 @@
 package com.example.events.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,6 +33,7 @@ public class Event {
     private String category;
     private Long creatorId;
 
+    @JsonIgnore
     @Getter
     @ManyToMany(fetch = FetchType.EAGER)
     private List<User> users = new ArrayList<>();
