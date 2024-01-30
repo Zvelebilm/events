@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/Style.css">
 </head>
 <body>
+<h1 class="colored-text">Create Event</h1>
 <div class="topnav">
     <ul class="navbarUl">
         <a class="active" th:href="@{/}">Home</a>
@@ -13,7 +14,7 @@
         <a th:text="${loggedInUser}" th:href="@{/logout}">Logout</a>
     </ul>
 </div>
-<h1>Create Event</h1>
+
 
 <form th:action="|/createEvent|" method="POST">
     <label for="name">Name:</label>

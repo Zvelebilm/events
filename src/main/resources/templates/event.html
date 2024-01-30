@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/Style.css">
 </head>
 <body>
+<h1 class="colored-text" th:text="${event.getName()}"/>
 <div class="topnav">
     <ul class="navbarUl">
         <a class="active" th:href="@{/}">Home</a>
@@ -13,7 +14,7 @@
         <a class="logout" th:text="${loggedInUser}" th:href="@{/logout}">Logout</a>
     </ul>
 </div>
-<h1 th:text="${event.getName()}"/>
+
 <div class="event-info">
     <label>Date:</label>
     <span th:text="${event.getDate()}"></span>
