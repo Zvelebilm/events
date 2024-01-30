@@ -30,6 +30,21 @@ input {
 .event-info {
     margin-bottom: 10px;
 }
+.eventTable {
+
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 30%;
+}
+td:nth-child(even) {
+    background-color: #dddddd;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+
+}
 
 .event-info label {
     font-weight: bold;
