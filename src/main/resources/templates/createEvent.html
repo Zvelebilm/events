@@ -14,8 +14,6 @@
         <a th:text="${loggedInUser}" th:href="@{/logout}">Logout</a>
     </ul>
 </div>
-
-
 <form th:action="|/createEvent|" method="POST">
     <label for="name">Name:</label>
     <input type="text" name="name" id="name">
@@ -42,6 +40,5 @@
     <input type="text" name="category" id="category">
     <br>
     <input type="submit" value="Create Event"></form>
-
 </body>
 </html>

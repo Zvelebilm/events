@@ -40,7 +40,7 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(r -> {
                     r.requestMatchers("/static/Style.css", "/scripts/**", "/login",
-                            "/register","/h2-console/**","/**","/createEvent").permitAll();
+                            "/register", "/h2-console/**", "/**", "/createEvent").permitAll();
 
 
                 })
@@ -49,12 +49,12 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/api/**")))
                 .build();
     }
+
     @Bean
     public UserDetailsService userDetailsService(UserRepository userRepo) {
 
         return username -> {
             Optional<com.example.events.models.User> user = userRepo.findByName(username);
-
             if (user.isPresent()) {
                 return User
                         .withUsername(username)

@@ -1,23 +1,22 @@
 package com.example.events.service;
 
-
 import com.example.events.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.example.events.models.User;
 
-import java.nio.file.Path;
-
 @Service
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+
     @Autowired
     public UserService(UserRepository userRepo, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepo;
         this.passwordEncoder = passwordEncoder;
     }
+
     public User getByUsername(String username) {
         return userRepository.findByName(username).orElse(null);
     }

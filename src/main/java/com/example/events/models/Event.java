@@ -22,7 +22,6 @@ public class Event {
     @Id
     @GeneratedValue
     private Long id;
-
     private String name;
     private LocalDate date;
     private String location;
@@ -47,7 +46,6 @@ public class Event {
         this.description = description;
         this.imageUrl = imageUrl;
         this.category = category;
-
     }
 
     public Event(EventCreateDTO eventCreateDTO) {

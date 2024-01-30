@@ -24,21 +24,13 @@ public class User {
     @NaturalId
     private String name;
     private String password;
-
     //todo - add roles
-    //todo - add email etc
-
-
+    //todo - add email etc.
     @ManyToMany(mappedBy = "users_db")
     List<Event> events_db = new ArrayList<>(); //<-->
-
 
     public User(String username, String password) {
         this.name = username;
         this.password = password;
     }
-
-    /*public void addToEvents(Event event) {
-        this.events.add(event);
-    }*/
 }

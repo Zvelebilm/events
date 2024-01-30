@@ -9,7 +9,6 @@ import java.util.List;
 
 @Service
 public class EventService {
-
     private final EventRepository eventRepository;
     private final UserService userService;
 
@@ -17,10 +16,9 @@ public class EventService {
         this.eventRepository = eventRepository;
         this.userService = userService;
     }
+
     //todo delete event
     //todo update event
-
-
     public void createEvent(Event event1) { //todo remove
         eventRepository.save(event1);
     }
@@ -68,7 +66,7 @@ public class EventService {
 
     public String getEventOwnerName(Long id) {
         try {
-            return userService.findById( eventRepository.findById(id).get().getCreatorId()).getName();
+            return userService.findById(eventRepository.findById(id).get().getCreatorId()).getName();
         } catch (Exception e) {
             return null;
         }

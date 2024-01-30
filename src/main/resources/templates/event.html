@@ -14,7 +14,6 @@
         <a class="logout" th:text="${loggedInUser}" th:href="@{/logout}">Logout</a>
     </ul>
 </div>
-
 <div class="event-info">
     <label>Date:</label>
     <span th:text="${event.getDate()}"></span>
@@ -34,7 +33,7 @@
     <span th:text="${eventCreator}"></span>
 </div>
 <div>
-    <table class="eventTable" >
+    <table class="eventTable">
         <tr>
             <th>Participants</th>
         </tr>
@@ -42,7 +41,6 @@
             <td th:text="${user.getName()}"/>
         </tr>
     </table>
-
 </div>
 <form th:action="@{/joinevent}" name="" method="post">
     <input type="hidden" name="eventId" th:value="${event.getId()}"/>

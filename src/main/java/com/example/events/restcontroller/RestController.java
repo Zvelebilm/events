@@ -47,14 +47,10 @@ public class RestController {
             }
             Event event = new Event(eventCreateDTO);
             User user = userService.getByUsername(eventCreateDTO.username());
-
             eventService.createEventAndSetOwner(event, user);
-
             return ResponseEntity.ok().build();
-
         } catch (Exception e) {
             return ResponseEntity.status(400).body(new ErrorDTO("Failed to create event"));
         }
-
     }
 }
