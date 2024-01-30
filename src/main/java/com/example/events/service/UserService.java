@@ -7,6 +7,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.example.events.models.User;
 
+import java.nio.file.Path;
+
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -29,5 +31,9 @@ public class UserService {
 
     public void saveUser(User user) {
         userRepository.save(user);
+    }
+
+    public User findById(Long creatorId) {
+        return userRepository.findById(creatorId).orElse(null);
     }
 }

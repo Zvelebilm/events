@@ -71,4 +71,12 @@ public class EventService {
         }
 
     }
+
+    public String getEventOwnerName(Long id) {
+        try {
+            return userService.findById( eventRepository.findById(id).get().getCreatorId()).getName();
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }
