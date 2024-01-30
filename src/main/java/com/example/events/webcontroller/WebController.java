@@ -1,4 +1,4 @@
-package com.example.events.WebLoginController;
+package com.example.events.webcontroller;
 
 import com.example.events.models.Event;
 import com.example.events.models.User;

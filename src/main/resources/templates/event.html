@@ -6,12 +6,13 @@
     <link rel="stylesheet" href="/Style.css">
 </head>
 <body>
-<h1 class="colored-text" th:text="${event.getName()}"/>
+<h1 th:text="${event.getName()}"/>
 <div class="topnav">
     <ul class="navbarUl">
         <a class="active" th:href="@{/}">Home</a>
         <a th:href="@{/createEvent}">Create Event</a>
-        <a class="logout" th:text="${loggedInUser}" th:href="@{/logout}">Logout</a>
+        <a th:href="@{/api}">API</a>
+        <a class="logout" th:text="${loggedInUser + ' Logout '}" th:href="@{/logout}"/>
     </ul>
 </div>
 <div class="event-info">

@@ -1,4 +1,4 @@
-package com.example.events.WebLoginController;
+package com.example.events.logincontroller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
