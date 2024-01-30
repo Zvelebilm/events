@@ -12,6 +12,10 @@
     font-size: 17px;
 }
 
+.topnav a.logout {
+    float: right;
+}
+
 .logout {
     float: right;
 }
