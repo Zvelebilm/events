@@ -5,6 +5,7 @@ import com.example.events.models.User;
 import com.example.events.repositories.EventRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -12,12 +13,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Component
-@NoArgsConstructor
+@Service
 public class EventService {
-    private EventRepository eventRepository;
-    private UserService userService;
-    @Autowired
+
+    private final EventRepository eventRepository;
+    private final UserService userService;
+
     public EventService(EventRepository eventRepository, UserService userService) {
         this.eventRepository = eventRepository;
         this.userService = userService;
@@ -58,7 +59,11 @@ public class EventService {
     public void joinEvent(Long eventId, String username) {
         try {
             Event event = eventRepository.findById(eventId).orElse(new Event());
-            User user = userService.getByUsername(username); //todo cant find user that is the problem
+            User user = userService.getByUsername(username);
+            if (event.getUsers().contains(user)) {
+                return;
+            }
+
             event.addParticipant(user);
             eventRepository.save(event);
         } catch (Exception e) {

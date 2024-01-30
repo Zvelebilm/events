@@ -41,17 +41,11 @@ public class SecurityConfig {
                 .authorizeHttpRequests(r -> {
                     r.requestMatchers("/static/Style.css", "/scripts/**", "/login",
                             "/register","/h2-console/**","/**","/createEvent").permitAll();
-                   /* r.requestMatchers(HttpMethod.GET, "/**").permitAll();//todo hasAnyRole("USER", "ADMIN");
-                    r.requestMatchers(HttpMethod.POST, "/createEvent").permitAll();
-                    r.requestMatchers(HttpMethod.DELETE, "/**").permitAll();
-                    r.requestMatchers(HttpMethod.PUT, "/**").permitAll();*/
-                    r.anyRequest().authenticated();
 
 
                 })
                 .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
                 .csrf(csrf -> csrf.ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")))
-                .csrf(csrf -> csrf.ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/createEvent")))
                 .build();
     }
     @Bean
